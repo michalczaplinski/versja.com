@@ -8,6 +8,8 @@ import BE from "../images/BE.svg"
 import IG from "../images/IG.svg"
 import FB from "../images/FB.svg"
 
+import "../layout.css"
+
 const BackgroundContainer = styled.div`
   position: fixed;
   top: 0;
@@ -52,23 +54,33 @@ const MainBg = styled.div`
 `
 
 const MainGrid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 200px 200px;
   height: 100%;
   width: 100%;
   padding-top: 40px;
-  padding-left: 60px;
   margin: 0 auto;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 0.85rem;
   font-weight: 300;
   color: rgba(0, 0, 0, 0.7);
+  display: grid;
+
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 200px 200px;
+  padding-left: 60px;
+
+  @media screen and (max-width: 500px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, auto);
+    grid-gap: 30px;
+    padding-top: 25px;
+    padding-left: 5px;
+  }
 `
 
 const TextContainer = styled.div`
   text-align: left;
+  grid-area: ${({ area }) => area};
 `
 
 const SocialIcon = styled.img`
@@ -124,7 +136,7 @@ const IndexPage = () => (
             <TextContainer>
               <div> info@versja.com</div>
             </TextContainer>
-            <span>
+            <TextContainer>
               <a href="https://www.facebook.com/versja/">
                 <SocialIcon src={FB} alt="facebook logo" />
               </a>
@@ -134,7 +146,7 @@ const IndexPage = () => (
               <a href="https://www.behance.net/info422cdddb">
                 <SocialIcon src={BE} alt="behance logo" />
               </a>
-            </span>
+            </TextContainer>
           </MainGrid>
         </MainBg>
       </Stuff>

@@ -24,7 +24,8 @@
     "styled-components": "^4.2.0"
   },
   "devDependencies": {
-    "prettier": "^1.17.0"
+    "prettier": "^1.17.0",
+    "url-loader": "^1.1.2"
   },
   "keywords": [
     "gatsby"

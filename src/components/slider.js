@@ -3,6 +3,9 @@ import Slick from "react-slick"
 import { StaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
+
 const settings = {
   dots: false,
   infinite: true,
