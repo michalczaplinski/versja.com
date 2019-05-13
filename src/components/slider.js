@@ -6,7 +6,7 @@ import Img from "gatsby-image"
 const settings = {
   dots: false,
   infinite: true,
-  arrows: true,
+  arrows: false,
   speed: 600,
   autoplay: true,
   autoPlaySpeed: 200,
