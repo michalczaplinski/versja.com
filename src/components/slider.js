@@ -15,13 +15,14 @@ const settings = {
   autoPlaySpeed: 200,
   slidesToShow: 1,
   slidesToScroll: 1,
-  lazyLoad: true,
+  lazyLoad: false,
+  pauseOnHover: false,
 }
 
 export const formattedImage = graphql`
   fragment formattedImage on File {
     childImageSharp {
-      fluid(maxWidth: 920, maxHeight: 700) {
+      fluid(maxWidth: 1080, maxHeight: 600) {
         ...GatsbyImageSharpFluid
       }
     }
@@ -32,7 +33,7 @@ const Slider = ({ ...className }) => (
   <StaticQuery
     query={graphql`
       query {
-        allFile(filter: { relativePath: { glob: "*.jpg" } }) {
+        allFile(filter: { relativePath: { glob: "slider/*" } }) {
           edges {
             node {
               ...formattedImage
@@ -43,8 +44,9 @@ const Slider = ({ ...className }) => (
     `}
     render={data => (
       <Slick {...settings} className={className}>
-        {data.allFile.edges.map(({ node }) => (
+        {data.allFile.edges.map(({ node }, index) => (
           <Img
+            key={index}
             fluid={node.childImageSharp.fluid}
             imgStyle={{ maxHeight: `100vh` }}
           />
