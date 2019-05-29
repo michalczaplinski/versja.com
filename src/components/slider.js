@@ -46,6 +46,8 @@ const Slider = ({ ...className }) => (
       <Slick {...settings} className={className}>
         {data.allFile.edges.map(({ node }, index) => (
           <Img
+            loading="eager"
+            fadeIn={false}
             key={index}
             fluid={node.childImageSharp.fluid}
             imgStyle={{ maxHeight: `100vh` }}
