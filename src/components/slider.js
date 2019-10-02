@@ -22,7 +22,7 @@ const settings = {
 export const formattedImage = graphql`
   fragment formattedImage on File {
     childImageSharp {
-      fluid(maxWidth: 1080, maxHeight: 600) {
+      fluid(maxWidth: 1080, maxHeight: 540) {
         ...GatsbyImageSharpFluid
       }
     }
@@ -46,7 +46,8 @@ const Slider = ({ ...className }) => (
       <Slick {...settings} className={className}>
         {data.allFile.edges.map(({ node }, index) => (
           <Img
-            loading="eager"
+            loading="auto"
+            critical
             fadeIn={false}
             key={index}
             fluid={node.childImageSharp.fluid}
